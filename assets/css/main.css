@@ -3722,3 +3722,9 @@ section,
 .starter-section {
   /* Add your styles here */
 }
+/* Custom hero image sizing */
+.main-image {
+  height: 500px;     
+  width: 500px;
+  object-fit: cover;
+}
