@@ -322,4 +322,235 @@ a:active {
 .custom-table tbody tr:hover {
   background-color: #00ffae22; /* Hover highlight */
 }
+/* ===========================
+   Custom Animation 1: Fade Up
+   =========================== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+.animate-fade-up {
+  animation: fadeUp 0.9s ease-out both;
+}
+/* ===============================
+   Custom Animation 2: Glow Hover
+   =============================== */
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 0px rgba(47, 228, 167, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(47, 228, 167, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0px rgba(47, 228, 167, 0.2);
+  }
+}
+
+.glow-hover:hover {
+  animation: glowPulse 1.2s infinite ease-in-out;
+}
+/* ===========================
+   CSS Loader (3 pulsing dots)
+   =========================== */
+
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #0a111d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  z-index: 9999;
+}
+
+.loader-dot {
+  width: 14px;
+  height: 14px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  animation: pulse 0.8s infinite ease-in-out;
+}
+
+.loader-dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.loader-dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.8); opacity: 0.4; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Hide loader when page finishes loading */
+body.loaded #loader {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-out;
+}
+/* ===========================
+   Button Glow Hover Effect
+   =========================== */
+
+.glow-hover {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate; /* keeps glow inside */
+}
+
+.glow-hover::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0deg,
+    #2fe4a7,
+    #00d4ff,
+    #7c4dff,
+    #2fe4a7
+  );
+  opacity: 0;
+  transform: scale(1.2);
+  z-index: -1;
+  animation: glow-rotate 1.8s linear infinite;
+}
+
+.glow-hover:hover::before,
+.glow-hover:focus-visible::before {
+  opacity: 1;
+}
+
+.glow-hover:hover,
+.glow-hover:focus-visible {
+  box-shadow: 0 0 20px rgba(47, 228, 167, 0.6);
+}
+
+/* rotating gradient behind button */
+@keyframes glow-rotate {
+  to {
+    transform: scale(1.2) rotate(360deg);
+  }
+}
+/* ===========================
+   Decorative Floating Shapes
+   =========================== */
+
+/* Make hero section the container */
+#hero {
+  position: relative;
+  overflow: hidden;
+}
+
+#hero::before,
+#hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(1px);
+  opacity: 0.9;
+}
+
+/* large circle top-right */
+#hero::before {
+  width: 260px;
+  height: 260px;
+  right: -60px;
+  top: -40px;
+  background: radial-gradient(circle at 30% 30%, #2fe4a7, transparent 60%);
+  animation: float-slow 14s ease-in-out infinite;
+}
+
+/* small circle bottom-left */
+#hero::after {
+  width: 180px;
+  height: 180px;
+  left: -50px;
+  bottom: -40px;
+  background: radial-gradient(circle at 70% 70%, #00d4ff, transparent 65%);
+  animation: float-slow-reverse 16s ease-in-out infinite;
+}
+
+@keyframes float-slow {
+  0%   { transform: translate3d(0, 0, 0); opacity: 0.85; }
+  50%  { transform: translate3d(-20px, 18px, 0); opacity: 1; }
+  100% { transform: translate3d(0, 0, 0); opacity: 0.85; }
+}
+
+@keyframes float-slow-reverse {
+  0%   { transform: translate3d(0, 0, 0); opacity: 0.9; }
+  50%  { transform: translate3d(22px, -16px, 0); opacity: 0.75; }
+  100% { transform: translate3d(0, 0, 0); opacity: 0.9; }
+}
+
+
+/* ===========================
+   Fade-Up Animation for cards
+   =========================== */
+
+.animate-fade-up {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: fade-up-in 0.8s ease-out forwards;
+}
+
+.animate-fade-up:nth-child(2) { animation-delay: 0.08s; }
+.animate-fade-up:nth-child(3) { animation-delay: 0.16s; }
+.animate-fade-up:nth-child(4) { animation-delay: 0.24s; }
+
+@keyframes fade-up-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Accessibility: Disable animations for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+/* ======================================
+   STRONG VISIBLE ANIMATED GRADIENT HERO BG
+   ====================================== */
+
+#hero {
+  background: linear-gradient(
+    135deg,
+    #0a1a2c,
+    #083348,
+    #116466,
+    #0b8793,
+    #0a1a2c
+  );
+  background-size: 400% 400%;
+  animation: heroGradient 10s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes heroGradient {
+  0%   { background-position: 0% 50%; }
+  25%  { background-position: 50% 100%; }
+  50%  { background-position: 100% 50%; }
+  75%  { background-position: 50% 0%; }
+  100% { background-position: 0% 50%; }
+}
