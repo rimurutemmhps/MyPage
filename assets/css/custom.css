@@ -1,0 +1,325 @@
+/* ===========================
+   1. TYPOGRAPHY SYSTEM
+   =========================== */
+
+:root {
+  --heading-font: "Ubuntu", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --body-font: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --accent-color: #2fe4a7;
+  --accent-color-dark: #1bb17c;
+  --text-muted: #a8b4c5;
+}
+
+/* Headings */
+
+h1, h2, h3 {
+  font-family: var(--heading-font);
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: #f7f9fc;
+}
+
+h1 {
+  font-size: clamp(2.6rem, 4vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: clamp(2.0rem, 3vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: clamp(1.4rem, 2.3vw, 1.7rem);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* Body text */
+
+body,
+p {
+  font-family: var(--body-font);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  color: #dde5f0;
+}
+
+.section-title p,
+.hero-description {
+  color: var(--text-muted);
+}
+
+/* ===========================
+   2. INTERACTIVE ELEMENTS
+   =========================== */
+
+/* Base link styles */
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+a:hover,
+a:focus-visible {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(47, 228, 167, 0.6);
+}
+
+a:active {
+  color: var(--accent-color-dark);
+}
+
+/* Primary / secondary buttons used in hero, services, etc. */
+
+.btn-primary,
+.btn-custom.primary,
+.submit-btn {
+  background: var(--accent-color);
+  border-radius: 999px;
+  border: none;
+  color: #07111f;
+  font-weight: 600;
+  padding: 0.75rem 1.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover,
+.btn-custom.primary:hover,
+.submit-btn:hover {
+  background: var(--accent-color-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+}
+
+.btn-primary:active,
+.btn-custom.primary:active,
+.submit-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* Secondary button */
+
+.btn-secondary,
+.btn-custom.secondary {
+  background: transparent;
+  border-radius: 999px;
+  border: 1px solid var(--accent-color);
+  color: #f5f8ff;
+  font-weight: 500;
+  padding: 0.75rem 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-secondary:hover,
+.btn-custom.secondary:hover {
+  background: rgba(47, 228, 167, 0.1);
+  color: var(--accent-color);
+  transform: translateY(-1px);
+}
+
+.btn-secondary:active,
+.btn-custom.secondary:active {
+  transform: translateY(0);
+}
+
+/* ===========================
+   3. SPACING SCALE & SURFACES
+   =========================== */
+
+/* Global section spacing (applies to many sections) */
+
+.section {
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
+}
+
+/* Consistent card surfaces across portfolio, services, testimonials */
+
+.portfolio-card,
+.service-item,
+.testimonial-slide {
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  background: linear-gradient(145deg, #121b2a, #0a111d);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.02);
+  padding: 1.7rem;
+}
+
+/* Inner spacing for text blocks in at least three sections */
+
+.hero-content,
+.about .content-area,
+.resume .professional-journey,
+.resume .education-skills {
+  padding: 1.8rem 2rem;
+  border-radius: 18px;
+  background: radial-gradient(circle at top left, rgba(47, 228, 167, 0.08), transparent 55%);
+}
+
+/* ===========================
+   4. TWO COMPONENTS RESTYLED
+   (NAVBAR + SCROLL-TOP)
+   =========================== */
+
+/* Component 1: Sidebar header/nav */
+
+.header {
+  background: radial-gradient(circle at top, #151e2e 0%, #050913 55%, #02040a 100%);
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.header .profile-img img {
+  border-radius: 22px;
+  border: 2px solid rgba(47, 228, 167, 0.7);
+  box-shadow: 0 0 25px rgba(47, 228, 167, 0.45);
+}
+
+.navmenu a {
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.navmenu a:hover,
+.navmenu a:focus-visible {
+  background: rgba(47, 228, 167, 0.12);
+  color: #ffffff;
+}
+
+.navmenu a.active {
+  background: rgba(47, 228, 167, 0.2);
+  color: #ffffff;
+  border-left: 3px solid var(--accent-color);
+}
+
+/* Component 2: Back-to-top button */
+
+#scroll-top {
+  width: 3.1rem;
+  height: 3.1rem;
+  border-radius: 999px;
+  background: var(--accent-color);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#scroll-top i {
+  font-size: 1.5rem;
+  color: #08131f;
+}
+
+#scroll-top:hover {
+  background: var(--accent-color-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.7);
+}
+/* =====================================================
+   5. CUSTOM LIST STYLING (Required for Assignment)
+   ===================================================== */
+
+.custom-ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.custom-ul > li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.custom-ul > li::before {
+  content: "◆";
+  color: #00ffae;
+  position: absolute;
+  left: 0;
+  font-size: 1.1rem;
+}
+
+.custom-ul ul {
+  margin-top: 6px;
+  margin-left: 20px;
+}
+
+.custom-ul ul li::before {
+  content: "→";
+  color: #00d4ff;
+}
+
+
+/* =====================================================
+   6. CUSTOM ORDERED LIST (CSS Counter)
+   ===================================================== */
+
+.custom-ol {
+  counter-reset: item;
+  padding-left: 0;
+}
+
+.custom-ol li {
+  counter-increment: item;
+  margin-bottom: 8px;
+  padding-left: 30px;
+  position: relative;
+}
+
+.custom-ol li::before {
+  content: counter(item) ". ";
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+  color: #00ffae;
+}
+
+
+/* =====================================================
+   7. CUSTOM TABLE STYLING 
+   ===================================================== */
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 1rem;
+  background: #0f1624;
+  color: #e3e9f2;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.custom-table thead {
+  background-color: #00ffae33;
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.custom-table .num {
+  text-align: right;
+  font-weight: 600;
+}
+
+.custom-table tbody tr:nth-child(even) {
+  background-color: #ffffff08; /* Zebra striping */
+}
+
+.custom-table tbody tr:hover {
+  background-color: #00ffae22; /* Hover highlight */
+}
+
