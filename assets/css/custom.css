@@ -654,3 +654,156 @@ body.loaded #loader {
   60% { transform: scale(1.05); opacity: 1; }
   100% { transform: scale(1); }
 }
+/* ===========================
+   Memory Game
+   =========================== */
+
+.memory-game-section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.memory-game-section h2 {
+  margin-bottom: 0.5rem;
+}
+
+.memory-game-section .section-intro {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.memory-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.memory-controls label {
+  font-weight: 500;
+}
+
+.memory-controls select {
+  background: #0b1524;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e3e9f2;
+  border-radius: 999px;
+  padding: 0.4rem 0.8rem;
+  outline: none;
+}
+
+.memory-stats {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+}
+
+.memory-board {
+  display: grid;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.memory-board.grid-easy {
+  grid-template-columns: repeat(4, minmax(60px, 90px));
+}
+
+.memory-board.grid-medium {
+  grid-template-columns: repeat(4, minmax(60px, 90px));
+}
+
+.memory-board.grid-hard {
+  grid-template-columns: repeat(6, minmax(55px, 80px));
+}
+
+.memory-card {
+  position: relative;
+  width: 100%;
+  padding-top: 130%; 
+  perspective: 800px;
+  cursor: pointer;
+}
+
+.memory-card-inner {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: radial-gradient(circle at 0 0, rgba(47, 228, 167, 0.22), #09111e);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.65);
+  transform-style: preserve-3d;
+  transition: transform 0.35s ease;
+}
+
+.memory-card.flipped .memory-card-inner,
+.memory-card.matched .memory-card-inner {
+  transform: rotateY(180deg);
+}
+
+.memory-card-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit;
+  backface-visibility: hidden;
+  font-size: 1.7rem;
+}
+
+.memory-card-back {
+  background: linear-gradient(135deg, #101b2c, #050910);
+  color: #2fe4a7;
+}
+
+.memory-card-front {
+  transform: rotateY(180deg);
+  background: #08111f;
+  color: #e3e9f2;
+}
+
+.memory-card.matched .memory-card-inner {
+  box-shadow: 0 0 20px rgba(47, 228, 167, 0.8);
+}
+
+.memory-message {
+  margin-top: 1.5rem;
+  font-weight: 500;
+  min-height: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .memory-controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .memory-board.grid-hard {
+    grid-template-columns: repeat(4, minmax(55px, 80px));
+  }
+}
+/* ==== Contact form validation styles ==== */
+
+.form-group.has-error input,
+.form-group.has-error textarea {
+  border-color: #ff4d4f;
+  box-shadow: 0 0 0 1px rgba(255, 77, 79, 0.3);
+}
+
+.field-error {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: #ffb3b3;
+}
+
+.submit-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}

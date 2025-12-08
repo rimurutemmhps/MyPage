@@ -1182,6 +1182,54 @@
 
     </section><!-- /Testimonials Section -->
 
+<!-- Memory Game Section -->
+<section id="memory-game" class="section memory-game-section">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <h2>Memory Game</h2>
+    <p class="section-intro">
+      Take a short break and test your memory with a simple flip-card game.
+    </p>
+    
+    <div class="memory-controls">
+      <label for="memory-difficulty">Difficulty:</label>
+      <select id="memory-difficulty">
+        <option value="easy">Easy (3 × 4)</option>
+        <option value="medium" selected>Medium (4 × 4)</option>
+        <option value="hard">Hard (4 × 6)</option>
+      </select>
+
+      <button id="memory-start" class="btn-custom primary glow-hover">
+        Start
+      </button>
+      <button id="memory-restart" class="btn-custom secondary">
+        Restart
+      </button>
+    </div>
+
+ <!-- Memory Game Stats Panel -->
+<div class="memory-stats">
+  <div>Moves: <span id="memory-moves">0</span></div>
+  <div>Matches: <span id="memory-matches">0/0</span></div>
+  <div>Best (Easy): <span id="memory-best-easy">–</span></div>
+  <div>Best (Medium): <span id="memory-best-medium">–</span></div>
+  <div>Best (Hard): <span id="memory-best-hard">–</span></div>
+  <div>Time: <span id="memory-timer">00:00</span></div>
+</div>
+
+<!-- Memory Game Board -->
+<div id="memory-board" class="memory-board"></div>
+
+<!-- Message -->
+<div id="memory-message" class="memory-message" aria-live="polite"></div>
+
+
+
+  </div>
+</section>
+<!-- /Memory Game Section -->
+
+
     <!-- Contact Section -->
     <section id="contact" class="contact section">
       <!-- Section Title -->
@@ -1365,10 +1413,11 @@
   <div id="form-output"></div>
 <div id="rating-average"></div>
 
-  <button type="submit" class="submit-btn">
+  <button type="submit" class="submit-btn" disabled>
     <span>Send Message</span>
     <i class="bi bi-arrow-right"></i>
-  </button>
+</button>
+
 
 </form>
 <div id="form-popup" class="popup hidden">
