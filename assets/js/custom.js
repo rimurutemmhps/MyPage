@@ -537,3 +537,122 @@ document.addEventListener("DOMContentLoaded", () => {
   resetTimer();        
   setupBoard();     
 });
+
+// ===============================
+// Multimeter (Ohm's law helper)
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+  const modeSelect   = document.getElementById("mm-mode");
+  const vInput       = document.getElementById("mm-voltage");
+  const iInput       = document.getElementById("mm-current");
+  const rInput       = document.getElementById("mm-resistance");
+  const calcBtn      = document.getElementById("mm-calc");
+  const clearBtn     = document.getElementById("mm-clear");
+  const displayValue = document.getElementById("mm-display-value");
+  const displayUnit  = document.getElementById("mm-display-unit");
+  const errorBox     = document.getElementById("mm-error");
+
+  if (
+    !modeSelect ||
+    !vInput || !iInput || !rInput ||
+    !calcBtn || !displayValue || !displayUnit
+  ) {
+    return;
+  }
+
+  function showError(msg) {
+    if (!errorBox) return;
+    errorBox.textContent = msg || "";
+  }
+
+  function parseValue(input) {
+    const raw = String(input.value).replace(",", ".").trim();
+    if (!raw) return null;
+    const num = Number(raw);
+    if (!Number.isFinite(num) || num < 0) return null;
+    return num;
+  }
+
+  function updateDisplay(value, unit) {
+    displayValue.textContent = value.toFixed(2);
+    displayUnit.textContent  = unit;
+  }
+
+  function resetMultimeter() {
+    vInput.value = "";
+    iInput.value = "";
+    rInput.value = "";
+    updateDisplay(0, "V");
+    showError("");
+  }
+
+  function handleCalculate() {
+    showError("");
+
+    const mode = modeSelect.value; // "voltage" | "current" | "resistance"
+
+    const U = parseValue(vInput);
+    const I = parseValue(iInput);
+    const R = parseValue(rInput);
+
+    let result;
+    let unit;
+
+    if (mode === "voltage") {
+      // U = I * R  
+      if (I == null || R == null) {
+        showError("Enter current and resistance to calculate voltage.");
+        return;
+      }
+      result = I * R;
+      unit = "V";
+      vInput.value = result.toFixed(2);
+
+    } else if (mode === "current") {
+      // I = U / R  
+      if (U == null || R == null || R === 0) {
+        showError("Enter voltage and non-zero resistance to calculate current.");
+        return;
+      }
+      result = U / R;
+      unit = "A";
+      iInput.value = result.toFixed(3);
+
+    } else if (mode === "resistance") {
+      // R = U / I  
+      if (U == null || I == null || I === 0) {
+        showError("Enter voltage and non-zero current to calculate resistance.");
+        return;
+      }
+      result = U / I;
+      unit = "Ω";
+      rInput.value = result.toFixed(2);
+    } else {
+      showError("Unknown mode.");
+      return;
+    }
+
+    updateDisplay(result, unit);
+  }
+
+  if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+      resetMultimeter();
+    });
+  }
+
+  calcBtn.addEventListener("click", handleCalculate);
+
+  modeSelect.addEventListener("change", () => {
+    showError("");
+    if (modeSelect.value === "voltage") {
+      displayUnit.textContent = "V";
+    } else if (modeSelect.value === "current") {
+      displayUnit.textContent = "A";
+    } else if (modeSelect.value === "resistance") {
+      displayUnit.textContent = "Ω";
+    }
+  });
+
+  resetMultimeter();
+});

@@ -1228,6 +1228,89 @@
   </div>
 </section>
 <!-- /Memory Game Section -->
+ 
+ <!-- Multimeter Section -->
+<section id="multimeter" class="section multimeter-section">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <header class="section-title">
+      <h2>Multimeter</h2>
+      <p>Simple Ohm's law helper: calculate voltage, current, or resistance.</p>
+    </header>
+
+    <div class="multimeter-layout">
+      <!-- Left: control panel -->
+      <div class="multimeter-panel">
+
+        <div class="multimeter-display">
+          <span class="display-label">Result</span>
+          <span id="mm-display-value">0.00</span>
+          <span id="mm-display-unit">V</span>
+        </div>
+
+        <!-- Mode selector -->
+        <div class="multimeter-group">
+          <label for="mm-mode">Calculate</label>
+          <select id="mm-mode">
+            <option value="voltage">Voltage (U)</option>
+            <option value="current">Current (I)</option>
+            <option value="resistance">Resistance (R)</option>
+          </select>
+          <small class="mm-help">
+            Choose which value to calculate. Enter the other two.
+          </small>
+        </div>
+
+        <!-- Inputs -->
+        <div class="multimeter-grid">
+          <div class="multimeter-group">
+            <label for="mm-voltage">Voltage U (V)</label>
+            <input type="number" id="mm-voltage" placeholder="e.g. 12" step="0.01" min="0">
+          </div>
+
+          <div class="multimeter-group">
+            <label for="mm-current">Current I (A)</label>
+            <input type="number" id="mm-current" placeholder="e.g. 0.5" step="0.001" min="0">
+          </div>
+
+          <div class="multimeter-group">
+            <label for="mm-resistance">Resistance R (Ω)</label>
+            <input type="number" id="mm-resistance" placeholder="e.g. 24" step="0.01" min="0">
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="multimeter-actions">
+          <button type="button" id="mm-calc" class="btn-custom primary glow-hover">
+            Calculate
+          </button>
+          <button type="button" id="mm-clear" class="btn-custom secondary">
+            Clear
+          </button>
+        </div>
+
+        <div id="mm-error" class="mm-error" aria-live="polite"></div>
+      </div>
+
+      <!-- Right: decorative "device" -->
+      <div class="multimeter-body">
+        <div class="multimeter-face">
+          <div class="multimeter-led led-on"></div>
+          <div class="multimeter-brand">MyTech DMM-01</div>
+          <div class="multimeter-dial">
+            <span>V</span>
+            <span>A</span>
+            <span>Ω</span>
+          </div>
+          <div class="multimeter-probes">
+            <div class="probe probe-red"></div>
+            <div class="probe probe-black"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 
     <!-- Contact Section -->
